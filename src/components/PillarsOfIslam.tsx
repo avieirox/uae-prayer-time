@@ -3,12 +3,12 @@ import { useTranslation } from 'react-i18next';
 import { Heart, BookOpen, Coins, CalendarDays, MapPin } from 'lucide-react';
 
 const PillarCard = ({ icon: Icon, title, description }: { icon: any, title: string, description: string }) => (
-  <div className="text-center">
-    <div className="bg-emerald-50 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4">
-      <Icon className="w-10 h-10 text-emerald-600" />
+  <div className="text-center transform transition-all duration-300 hover:scale-105">
+    <div className="bg-emerald-50 w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md">
+      <Icon className="w-12 h-12 text-emerald-600" />
     </div>
-    <h3 className="font-bold text-gray-800 mb-2">{title}</h3>
-    <p className="text-gray-600 text-sm">{description}</p>
+    <h3 className="text-xl font-bold text-gray-800 mb-3">{title}</h3>
+    <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
   </div>
 );
 
@@ -54,7 +54,7 @@ const PillarsOfIslam = () => {
             {t('pillars.subtitle')}
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {pillars.map((pillar) => (
             <PillarCard key={pillar.title} {...pillar} />
           ))}

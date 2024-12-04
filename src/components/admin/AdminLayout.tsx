@@ -8,7 +8,7 @@ const AdminLayout = () => {
   const { isAuthenticated } = useAuthStore();
 
   if (!isAuthenticated) {
-    return <Navigate to="/admin/login" replace />;
+    return <Navigate to="/admin/auth" replace />;
   }
 
   return (

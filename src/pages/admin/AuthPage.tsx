@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '../../store/auth';
 import { Moon, Loader2 } from 'lucide-react';
 import type { AuthFormData } from '../../types/auth';
@@ -86,7 +86,9 @@ const AuthPage = () => {
              'Reset Password'}
           </h1>
         </div>
-
+        <Link to="/" className="block text-center text-emerald-600 hover:text-emerald-700 mb-6">
+          ← Back to Home
+        </Link>
         {error && (
           <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-md text-sm">
             {error}

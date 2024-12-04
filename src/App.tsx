@@ -4,7 +4,8 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Welcome from './components/Welcome';
 import PrayerTimes from './components/PrayerTimes';
-import Services from './components/Services';
+import Events from './components/Events';
+import LocationSelector from './components/LocationSelector';
 import PillarsOfIslam from './components/PillarsOfIslam';
 import Footer from './components/Footer';
 import AdminLayout from './components/admin/AdminLayout';
@@ -18,8 +19,9 @@ const MainLayout = () => (
     <Hero />
     <Welcome />
     <PrayerTimes />
-    <Services />
     <PillarsOfIslam />
+    <Events />
+    <LocationSelector />
     <Footer />
   </>
 );

@@ -5,7 +5,7 @@ import { AuthState, User } from '../types/auth';
 const MOCK_USERS: User[] = [
   {
     id: '1',
-    email: 'admin@islamiccenter.com',
+    email: 'admin@prayertimes.com',
     name: 'Admin User',
     role: 'admin',
   },
@@ -20,6 +20,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     const user = MOCK_USERS.find((u) => u.email === email);
     if (user && password === 'admin123') {
       set({ user, isAuthenticated: true });
+      return user;
     } else {
       throw new Error('Invalid credentials');
     }
@@ -40,6 +41,7 @@ export const useAuthStore = create<AuthState>((set) => ({
     
     MOCK_USERS.push(newUser);
     set({ user: newUser, isAuthenticated: true });
+    return newUser;
   },
 
   resetPassword: async (email: string) => {

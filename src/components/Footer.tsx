@@ -13,22 +13,22 @@ const Footer = () => {
           <div>
             <div className="flex items-center space-x-2 mb-6">
               <Moon className="h-8 w-8 text-emerald-500" />
-              <span className="text-xl font-bold text-white">Islamic Center</span>
+              <span className="text-xl font-bold text-white">Prayer Times</span>
             </div>
             <p className="text-gray-400 mb-6">
               {t('footer.about')}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-emerald-500">
+              <a href="#" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-emerald-500">
+              <a href="#" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-emerald-500">
+              <a href="#" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-emerald-500">
+              <a href="#" className="text-gray-400 hover:text-emerald-500 transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>
@@ -57,15 +57,15 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-emerald-500" />
-                <span>123 Islamic Center St, City, Country</span>
+                <span>Dubai, United Arab Emirates</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-emerald-500" />
-                <span>+1 234 567 8900</span>
+                <span>+971 4 XXX XXXX</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-emerald-500" />
-                <span>info@islamiccenter.com</span>
+                <span>info@prayertimes.com</span>
               </li>
             </ul>
           </div>
@@ -95,7 +95,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
           <p className="text-gray-400">
-            © {new Date().getFullYear()} Islamic Center. {t('footer.copyright')}
+            {new Date().getFullYear()} Prayer Times. {t('footer.copyright')}
           </p>
         </div>
       </div>

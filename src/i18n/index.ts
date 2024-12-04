@@ -16,6 +16,7 @@ const resources = {
         quote: 'Indeed, prayer has been decreed upon the believers a decree of specified times.' // Quran 4:103
       },
       welcome: {
+        title: "It's time to Prayer",
         description: 'At Prayer Times UAE, we provide up-to-date and accurate prayer times for all cities across the Emirates, including Dubai, Abu Dhabi, and beyond. Our service ensures you never miss a moment of worship, with real-time updates for all five daily prayers: Fajr, Dhuhr, Asr, Maghrib, and Isha.'
       },
       prayers: {
@@ -43,6 +44,7 @@ const resources = {
         quote: 'إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا' // النساء: ١٠٣
       },
       welcome: {
+        title: 'حان وقت الصلاة',
         description: 'في مواقيت الصلاة الإمارات، نقدم مواقيت صلاة دقيقة ومحدثة لجميع مدن الإمارات، بما في ذلك دبي وأبوظبي وغيرها. تضمن خدمتنا عدم تفويت أي لحظة من لحظات العبادة، مع تحديثات في الوقت الحقيقي للصلوات الخمس اليومية: الفجر والظهر والعصر والمغرب والعشاء.'
       },
       prayers: {
