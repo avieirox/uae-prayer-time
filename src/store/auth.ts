@@ -11,15 +11,22 @@ const MOCK_USERS: User[] = [
   },
 ];
 
+// Mock token generation
+const generateToken = (user: User) => {
+  return btoa(JSON.stringify({ userId: user.id, email: user.email, role: user.role }));
+};
+
 export const useAuthStore = create<AuthState>((set) => ({
   user: null,
+  token: null,
   isAuthenticated: false,
   
   login: async (email: string, password: string) => {
     // Mock authentication - Replace with actual API call
     const user = MOCK_USERS.find((u) => u.email === email);
     if (user && password === 'admin123') {
-      set({ user, isAuthenticated: true });
+      const token = generateToken(user);
+      set({ user, token, isAuthenticated: true });
       return user;
     } else {
       throw new Error('Invalid credentials');
@@ -40,7 +47,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     };
     
     MOCK_USERS.push(newUser);
-    set({ user: newUser, isAuthenticated: true });
+    const token = generateToken(newUser);
+    set({ user: newUser, token, isAuthenticated: true });
     return newUser;
   },
 
@@ -50,10 +58,10 @@ export const useAuthStore = create<AuthState>((set) => ({
     if (!user) {
       throw new Error('Email not found');
     }
-    // In a real app, this would send a reset email
+    return true;
   },
 
   logout: () => {
-    set({ user: null, isAuthenticated: false });
+    set({ user: null, token: null, isAuthenticated: false });
   },
 }));

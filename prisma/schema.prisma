@@ -11,55 +11,96 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Location {
   id        Int      @id @default(autoincrement())
-  city      String
-  country   String
-  latitude  Float
-  longitude Float
-  timezone  String
+  city      String   @db.VarChar(255)
+  country   String   @db.VarChar(255)
+  latitude  Float    @db.Double
+  longitude Float    @db.Double
+  timezone  String   @db.VarChar(100)
   prayers   Prayer[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @db.Timestamp(6)
+
+  @@index([city, country])
 }
 
 model Prayer {
   id         Int      @id @default(autoincrement())
-  date       DateTime
-  fajr       DateTime
-  sunrise    DateTime
-  dhuhr      DateTime
-  asr        DateTime
-  maghrib    DateTime
-  isha       DateTime
+  date       DateTime @db.Date
+  fajr       DateTime @db.Time(6)
+  sunrise    DateTime @db.Time(6)
+  dhuhr      DateTime @db.Time(6)
+  asr        DateTime @db.Time(6)
+  maghrib    DateTime @db.Time(6)
+  isha       DateTime @db.Time(6)
   location   Location @relation(fields: [locationId], references: [id])
   locationId Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @default(now()) @db.Timestamp(6)
+  updatedAt  DateTime @updatedAt @db.Timestamp(6)
 
   @@index([date, locationId])
 }
 
 model Settings {
   id           Int      @id @default(autoincrement())
-  method       Int      @default(2) // Default to Islamic Society of North America
-  school       Int      @default(0) // Default to Shafi
+  method       Int      @default(2)
+  school       Int      @default(0)
   midnightMode Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now()) @db.Timestamp(6)
+  updatedAt    DateTime @updatedAt @db.Timestamp(6)
 }
 
 model User {
   id        Int      @id @default(autoincrement())
-  email     String   @unique
-  password  String
-  name      String?
-  role      String   @default("user")
+  email     String   @unique @db.VarChar(255)
+  password  String   @db.VarChar(255)
+  name      String?  @db.VarChar(255)
+  role      String   @default("user") @db.VarChar(50)
   active    Boolean  @default(true)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now()) @db.Timestamp(6)
+  updatedAt DateTime @updatedAt @db.Timestamp(6)
 
   @@index([email])
+}
+
+model Mosque {
+  id                            Int      @id @default(autoincrement())
+  wheelchair_accessible_entrance Boolean? @db.TinyInt
+  wheelchair_accessible_parking  Boolean? @db.TinyInt
+  women_prayer_section          Boolean? @db.TinyInt
+  address                       String?  @db.VarChar(255)
+  city                         String?  @db.VarChar(100)
+  country_code                 String?  @db.Char(2)
+  latitud                      String?  @db.Text
+  longitud                     String?  @db.Text
+  neighborhood                 String?  @db.VarChar(255)
+  openinghours_0_day          String?  @db.VarChar(20)
+  openinghours_0_hours        String?  @db.VarChar(50)
+  openinghours_1_day          String?  @db.VarChar(20)
+  openinghours_1_hours        String?  @db.VarChar(50)
+  openinghours_2_day          String?  @db.VarChar(20)
+  openinghours_2_hours        String?  @db.VarChar(50)
+  openinghours_3_day          String?  @db.VarChar(20)
+  openinghours_3_hours        String?  @db.VarChar(50)
+  openinghours_4_day          String?  @db.VarChar(20)
+  openinghours_4_hours        String?  @db.VarChar(50)
+  openinghours_5_day          String?  @db.VarChar(20)
+  openinghours_5_hours        String?  @db.VarChar(50)
+  openinghours_6_day          String?  @db.VarChar(20)
+  openinghours_6_hours        String?  @db.VarChar(50)
+  phone                       String?  @db.VarChar(50)
+  reviews_count               Int?     @db.Int
+  search_pageurl              String?  @db.VarChar(500)
+  state                       String?  @db.VarChar(100)
+  street                      String?  @db.VarChar(255)
+  title                       String?  @db.VarChar(255)
+  url_slug                    String?  @db.VarChar(255)
+  image_name                  String?  @db.VarChar(255)
+  total_score                 Decimal? @db.Decimal(3, 1)
+  url_google                  String?  @db.VarChar(500)
+  website                     String?  @db.VarChar(500)
 }

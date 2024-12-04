@@ -7,11 +7,13 @@ import {
   Users,
   Settings,
   Clock,
+  MapPin,
 } from 'lucide-react';
 
 const AdminSidebar = () => {
   const menuItems = [
     { icon: LayoutDashboard, label: 'Dashboard', path: '/admin' },
+    { icon: MapPin, label: 'Mosques', path: '/admin/mosques' },
     { icon: Calendar, label: 'Events', path: '/admin/events' },
     { icon: FileText, label: 'News', path: '/admin/news' },
     { icon: Clock, label: 'Prayer Times', path: '/admin/prayer-times' },

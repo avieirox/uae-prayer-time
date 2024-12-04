@@ -22,7 +22,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center space-x-4">
             <Moon className="h-8 w-8 text-emerald-600" />
-            <span className="text-2xl font-bold text-emerald-600">Islamic Center</span>
+            <span className="text-2xl font-bold text-emerald-600">UAE Prayer Time</span>
           </Link>
 
           <button
@@ -48,24 +48,28 @@ const Header = () => {
               <li className="relative py-2 md:py-0">
                 <button
                   onClick={() => setIsMosquesOpen(!isMosquesOpen)}
-                  className="flex items-center space-x-2 text-gray-700 hover:text-emerald-600 transition-colors"
+                  className="flex items-center text-gray-700 hover:text-emerald-600 transition-colors"
                 >
-                  <span>Mosques</span>
-                  <ChevronDown className="h-4 w-4" />
+                  Mosques
+                  <ChevronDown className="h-4 w-4 ml-1" />
                 </button>
                 {isMosquesOpen && (
-                  <ul className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
-                    {emirates.map((emirate) => (
-                      <li key={emirate}>
-                        <a
-                          href={`#${emirate.toLowerCase()}`}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          {emirate}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                    <Link
+                      to="/dubai"
+                      className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600"
+                      onClick={() => setIsMosquesOpen(false)}
+                    >
+                      Dubai
+                    </Link>
+                    <Link
+                      to="/abu-dhabi"
+                      className="block px-4 py-2 text-gray-700 hover:bg-emerald-50 hover:text-emerald-600"
+                      onClick={() => setIsMosquesOpen(false)}
+                    >
+                      Abu Dhabi
+                    </Link>
+                  </div>
                 )}
               </li>
               <li className="py-2 md:py-0">

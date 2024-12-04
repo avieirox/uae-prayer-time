@@ -81,4 +81,62 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// Mosque routes
+router.get('/mosques', async (req, res) => {
+  try {
+    const mosques = await prisma.mosque.findMany({
+      orderBy: { id: 'asc' }
+    });
+    res.json(mosques);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching mosques' });
+  }
+});
+
+router.post('/mosques', async (req, res) => {
+  try {
+    const { name, address, latitude, longitude } = req.body;
+    const mosque = await prisma.mosque.create({
+      data: {
+        name,
+        address,
+        latitude,
+        longitude
+      }
+    });
+    res.status(201).json(mosque);
+  } catch (error) {
+    res.status(500).json({ error: 'Error creating mosque' });
+  }
+});
+
+router.put('/mosques/:id', async (req, res) => {
+  try {
+    const { name, address, latitude, longitude } = req.body;
+    const mosque = await prisma.mosque.update({
+      where: { id: parseInt(req.params.id) },
+      data: {
+        name,
+        address,
+        latitude,
+        longitude
+      }
+    });
+    res.json(mosque);
+  } catch (error) {
+    res.status(500).json({ error: 'Error updating mosque' });
+  }
+});
+
+router.delete('/mosques/:id', async (req, res) => {
+  try {
+    await prisma.mosque.delete({
+      where: { id: parseInt(req.params.id) }
+    });
+    res.status(204).send();
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting mosque' });
+  }
+});
+
 export const locationRoutes = router;

@@ -1,0 +1,42 @@
+export interface Mosque {
+  id: number;
+  wheelchair_accessible_entrance: boolean | null;
+  wheelchair_accessible_parking: boolean | null;
+  women_prayer_section: boolean | null;
+  address: string | null;
+  city: string | null;
+  country_code: string | null;
+  latitud: string | null;
+  longitud: string | null;
+  neighborhood: string | null;
+  openinghours_0_day: string | null;
+  openinghours_0_hours: string | null;
+  openinghours_1_day: string | null;
+  openinghours_1_hours: string | null;
+  openinghours_2_day: string | null;
+  openinghours_2_hours: string | null;
+  openinghours_3_day: string | null;
+  openinghours_3_hours: string | null;
+  openinghours_4_day: string | null;
+  openinghours_4_hours: string | null;
+  openinghours_5_day: string | null;
+  openinghours_5_hours: string | null;
+  openinghours_6_day: string | null;
+  openinghours_6_hours: string | null;
+  phone: string | null;
+  reviews_count: number | null;
+  search_pageurl: string | null;
+  state: string | null;
+  street: string | null;
+  title: string | null;
+  url_slug: string | null;
+  image_name: string | null;
+  total_score: number | null;
+  url_google: string | null;
+  website: string | null;
+  createdAt: string | null;
+  updatedAt: string | null;
+}
+
+export type CreateMosqueDTO = Omit<Mosque, 'id'>;
+export type UpdateMosqueDTO = Partial<CreateMosqueDTO> & { id: number };
